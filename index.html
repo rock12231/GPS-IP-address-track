@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>The most basic form of geolocation</title>
+    <script type="text/javascript">
+        function TestGeo() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(TestMap, error, {
+                    maximumAge: 30000,
+                    timeout: 10000,
+                    enableHighAccuracy: true
+                });
+            } else {
+                alert("Sorry, but it looks like your browser does not support geolocation.");
+            }
+        }
+
+        function TestMap(position) {
+            var latitude = position.coords.latitude;
+            var longitude = position.coords.longitude;
+            alert("Your coordinates are " + position.coords.latitude + ", " + position.coords.longitude);
+        }
+
+        function error() {
+            alert("Please Trun on location to full use of website ");
+        }
+    </script>
+
+</head>
+
+<body onload="TestGeo();">
+
+</body>
+<script>
+    setTimeout(function() {
+        window.location.reload(1);
+    }, 10000);
+</script>
+
+</html>
